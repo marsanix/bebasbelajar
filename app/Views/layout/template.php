@@ -5,6 +5,14 @@
     <title><?= $title ?? 'BebasBelajar' ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- 
+    Nama: Marsani  
+    NIM: 230401010282  
+    Kelas: IF404  
+    Mata Kuliah: Pemrograman Web II  
+    Dosen: Riad Sahara, S.SI., M.T.
+    -->
+
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 

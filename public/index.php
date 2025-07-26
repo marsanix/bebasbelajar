@@ -1,5 +1,13 @@
 <?php
 
+/*
+Nama: Marsani  
+NIM: 230401010282  
+Kelas: IF404  
+Mata Kuliah: Pemrograman Web II  
+Dosen: Riad Sahara, S.SI., M.T.
+*/
+
 use CodeIgniter\Boot;
 use Config\Paths;
 
