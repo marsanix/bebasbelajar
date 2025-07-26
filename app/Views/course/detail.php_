@@ -1,0 +1,58 @@
+<?= $this->extend('layout/template') ?>
+<?= $this->section('content') ?>
+
+<h2><?= esc($course['title']) ?></h2>
+<div>Category: <?= esc($course['category_name']) ?></div>
+<p><?= esc($course['description']) ?></p>
+
+<hr>
+
+<?php if ($isLoggedIn && session()->get('role') == 'admin'): ?>
+    <a href="<?= base_url('/material/upload/' . $course['id']) ?>" class="btn btn-success mb-3">+ Tambah Materi</a>
+<?php endif; ?>
+
+
+<h4>Materi</h4>
+
+<?php if (empty($materials)): ?>
+    <div class="alert alert-warning">Belum ada materi.</div>
+<?php else: ?>
+    <ul class="list-group">
+        <?php foreach ($materials as $m): ?>
+            <li class="list-group-item">
+
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <strong>
+                            <a href="<?= base_url('material/view/' . $m['id']) ?>">
+                                <?= esc($m['title']) ?>
+                            </a>
+                        </strong>
+                    </div>
+
+                    <?php if ($isLoggedIn && session('role') == 'admin'): ?>
+                        <div>
+                            <a href="<?= base_url('material/edit/' . $m['id']) ?>" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="<?= base_url('material/delete/' . $m['id']) ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus materi ini?')">
+                                <?= csrf_field() ?>
+                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <?php if (!$isLoggedIn): ?>
+                    <span class="text-muted">Login untuk melihat konten materi ini.</span>
+                <?php else: ?>
+                    <?php if ($m['type'] === 'article'): ?>
+                        <p><?= esc(substr($m['content'], 0, 150)) ?>...</p>
+                    <?php else: ?>
+                        <a href="<?= base_url('uploads/' . $m['file_path']) ?>" target="_blank" class="btn btn-outline-primary btn-sm">Download / Lihat</a>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<?= $this->endSection() ?>
