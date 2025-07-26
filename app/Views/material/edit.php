@@ -51,6 +51,9 @@
     <a href="<?= base_url('course/' . $material['course_id']) ?>" class="btn btn-secondary">Batal</a>
 </form>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
 <!-- jQuery CDN -->
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script>
@@ -66,5 +69,4 @@
         }
     });
 </script>
-
 <?= $this->endSection() ?>
